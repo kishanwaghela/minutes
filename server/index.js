@@ -24,17 +24,15 @@ app.use(helmet({
 const PORT = 8080 || process.env.PORT
 
 app.get('/', (request, response) => {
-    response.json({
-        message: 'Server is Running ' + PORT
-    })
+    response.json({ message: `Server is Running ${PORT}` })
 })
 
 
-app.use('/api/user',userRouter)
+app.use('/api/user', userRouter)
 
 connectDB().then(() => {
     app.listen(PORT, () => {
-        console.log("Server is Running", PORT);
+        console.log(`Server is Running http://localhost:${PORT}`,);
     })
 })
 
