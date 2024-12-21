@@ -9,23 +9,23 @@ import toast from 'react-hot-toast';
 import { setUserDetails } from '../store/userSlice';
 import fetchUserDetails from '../utils/fetchUserDetails';
 
-
 const Profile = () => {
     const user = useSelector(state => state.user)
+    console.log("userData Profile", user);
     const [openProfileAvatarEdit, setProfileAvatarEdit] = useState(false)
     const [userData, setUserData] = useState({
-        name: user.name,
-        email: user.email,
-        mobile: user.mobile,
+        name: user?.name,
+        email: user?.email,
+        mobile: user?.mobile,
     })
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
         setUserData({
-            name: user.name,
-            email: user.email,
-            mobile: user.mobile,
+            name: user?.name,
+            email: user?.email,
+            mobile: user?.mobile,
         })
     }, [user])
 
@@ -71,10 +71,10 @@ const Profile = () => {
             {/**profile upload and display image */}
             <div className='w-20 h-20 bg-red-500 flex items-center justify-center rounded-full overflow-hidden drop-shadow-sm'>
                 {
-                    user.avatar ? (
+                    user?.avatar ? (
                         <img
-                            alt={user.name}
-                            src={user.avatar}
+                            alt={user?.name}
+                            src={user?.avatar}
                             className='w-full h-full'
                         />
                     ) : (
